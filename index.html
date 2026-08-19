@@ -43,6 +43,25 @@
       .hero-scroll{bottom:1rem}
       @media(max-width:1100px){.site-header{height:5.3rem;padding:0 1.5rem}.brand-logo img{width:12rem}.site-header .main-nav{flex:1;justify-content:center}.site-header .main-nav a{font-size:.68rem}.header-contact{min-height:2.9rem;padding:.75rem 1rem}}
       @media(max-width:760px){.site-header{height:4.8rem;padding:0 1rem}.brand-logo img{width:9rem;max-width:45vw}.header-contact{min-height:0;padding:.7rem .65rem}}
+      /* Responsive composition: preserve the hierarchy at 1:1 and mobile widths. */
+      @media(max-width:760px){
+        .hero-content{top:43%;transform:translateY(-10%)}
+        .hero-copy{margin-top:1.35rem;line-height:1.5}
+        .hero-actions{margin-top:1.7rem}
+        .hero-scroll{bottom:.85rem;font-size:.52rem}
+        .hero-meta{bottom:.85rem;font-size:.5rem}
+      }
+      @media(max-width:520px){
+        .site-header{left:.65rem;right:.65rem}
+        .brand-logo img{width:8rem}
+        .header-actions{gap:.55rem}
+        .header-contact{padding:.62rem .55rem;font-size:.58rem;letter-spacing:.12em}
+        .hero-content{top:40%;width:calc(100% - 2rem)}
+        h1{font-size:clamp(2.75rem,12.5vw,4rem)}
+        .hero-copy{font-size:.82rem;max-width:310px}
+        .hero-scroll{left:1rem;bottom:.65rem}
+        .hero-meta{right:1rem;bottom:.65rem}
+      }
     </style>
   </head>
   <body>
