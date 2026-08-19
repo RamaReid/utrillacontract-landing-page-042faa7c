@@ -134,6 +134,10 @@
         .solution-grid{grid-template-columns:1fr}
         .solution-card:first-child{grid-column:auto}
       }
+      /* Transición continua entre clips: dos capas evitan el corte a negro. */
+      #hero-video{display:none}
+      .hero-video-transition{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(10%) contrast(.94) brightness(.82);z-index:0;opacity:0;transition:opacity 900ms cubic-bezier(.22,.61,.36,1);pointer-events:none}
+      .hero-video-transition.is-active{opacity:1}
     </style>
   </head>
   <body>
@@ -193,7 +197,26 @@
     </script>
     <script>
       const heroSpeed=document.querySelector('#hero-video');
-      if(heroSpeed){const applyHeroSpeed=()=>{heroSpeed.playbackRate=.5};heroSpeed.addEventListener('loadedmetadata',applyHeroSpeed);heroSpeed.addEventListener('play',applyHeroSpeed);applyHeroSpeed()}
+      if(heroSpeed){const applyHeroSpeed=()=>{heroSpeed.playbackRate=.75};heroSpeed.addEventListener('loadedmetadata',applyHeroSpeed);heroSpeed.addEventListener('play',applyHeroSpeed);applyHeroSpeed()}
+    </script>
+    <script>
+      const transitionShell=document.querySelector('.hero-shell');
+      if(transitionShell){
+        const transitionSources=['001-HD.webm','002-HD.webm','003-HD.webm','004-HD.webm'];
+        const transitionCaptions=['Habitación de hotel · Mobiliario contract','Habitaciones completas · Equipamiento hotelero','Mobiliario a medida · Fabricación propia','FF&E · Equipamiento integral'];
+        const transitionCaption=document.querySelector('#hero-caption');
+        const transitionCounter=document.querySelector('#hero-counter');
+        const transitionPlayers=transitionSources.map((source,index)=>{const player=document.createElement('video');player.className='hero-video-transition';player.muted=true;player.playsInline=true;player.preload='auto';player.src=source;player.setAttribute('aria-hidden','true');player.dataset.index=index;transitionShell.insertBefore(player,transitionShell.firstChild);return player});
+        let transitionIndex=0;
+        let transitionChanging=false;
+        let activePlayer=transitionPlayers[0];
+        const updateTransitionMeta=()=>{if(transitionCaption)transitionCaption.textContent=transitionCaptions[transitionIndex];if(transitionCounter)transitionCounter.textContent=`${String(transitionIndex+1).padStart(2,'0')} / ${String(transitionSources.length).padStart(2,'0')}`};
+        const setTransitionSpeed=player=>{player.playbackRate=.75};
+        const playTransition=player=>{setTransitionSpeed(player);return player.play().catch(()=>undefined)};
+        const advanceTransition=()=>{if(transitionChanging)return;transitionChanging=true;const nextIndex=(transitionIndex+1)%transitionPlayers.length;const nextPlayer=transitionPlayers[nextIndex];transitionIndex=nextIndex;setTransitionSpeed(nextPlayer);nextPlayer.currentTime=0;nextPlayer.classList.add('is-active');playTransition(nextPlayer);window.setTimeout(()=>{activePlayer.classList.remove('is-active');activePlayer.pause();activePlayer=nextPlayer;updateTransitionMeta();transitionChanging=false},650)};
+        transitionPlayers.forEach(player=>{player.addEventListener('loadedmetadata',()=>setTransitionSpeed(player));player.addEventListener('timeupdate',()=>{if(player===activePlayer&&player.duration&&player.currentTime>player.duration-.9)advanceTransition()})});
+        activePlayer.classList.add('is-active');updateTransitionMeta();playTransition(activePlayer);
+      }
     </script>
   </body>
 </html>
