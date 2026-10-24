@@ -1,6 +1,10 @@
-# UtrillaContract Landing Page
+# Utrilla Contract — Aplicación de conocimientos de diseño para mejorar la eficiencia comunicacional
 
-vamos armar una pagina web para utrillacontract, quiero que en principio armes una estructura de landpage/home con header y hero y varias secciones
+El proyecto parte del análisis de la web existente de Utrilla Contract. La intervención aplica conocimientos de metodología de diseño, comunicación visual y experiencia de usuario para facilitar la comprensión de la oferta y el recorrido hacia la consulta.
+
+Trabajé con los contenidos y recursos disponibles, reorganizando jerarquías, escalas, secuencias y relaciones. Cada decisión busca que el visitante identifique con mayor claridad qué ofrece la empresa, cómo responde a su necesidad y cuál es el siguiente paso.
+
+El prototipo permite materializar y revisar esas decisiones en una experiencia navegable. La mejora de eficiencia es el objetivo de diseño; su resultado requiere validación con usuarios.
 
 ## Desarrollo y publicación
 
@@ -8,15 +12,25 @@ La codificación se realiza principalmente en Visual Studio Code, con asistencia
 
 Lovable se utiliza también para facilitar la publicación y disponer de una dirección web desde la que explorar el proyecto.
 
-[Proyecto en Lovable](https://lovable.dev/projects/fb639b27-3380-48da-8428-2ccf14795133).
+## Ver el proyecto
 
-## Development
+- [Web de referencia](https://utrillacontract.com/es/)
+- [Explorar el prototipo](https://utrillacontract-rama.lovable.app/)
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Cómo ejecutarlo
+
+Con Node.js instalado, descargar el repositorio y ejecutar:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
 npm run dev
 ```
+
+Abrir la dirección local que indique el servidor. Para generar la versión de distribución:
+
+```sh
+npm run build
+```
+
+## Autor
+
+Ramiro García Reid.
