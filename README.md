@@ -2,15 +2,13 @@
 
 vamos armar una pagina web para utrillacontract, quiero que en principio armes una estructura de landpage/home con header y hero y varias secciones
 
-This project was built with [Lovable](https://lovable.dev).
+## Desarrollo y publicación
 
-## Build with Lovable
+La codificación se realiza principalmente en Visual Studio Code, con asistencia de Codex y del asistente de Lovable. Las decisiones de diseño, la revisión y la validación del resultado están a mi cargo.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/fb639b27-3380-48da-8428-2ccf14795133).
+Lovable se utiliza también para facilitar la publicación y disponer de una dirección web desde la que explorar el proyecto.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `master` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+[Proyecto en Lovable](https://lovable.dev/projects/fb639b27-3380-48da-8428-2ccf14795133).
 
 ## Development
 
